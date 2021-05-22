@@ -1,0 +1,108 @@
+// Number é a construtora de números, todo número possui
+// as propriedades e métodos do prototype de Number.
+// Number também possui alguns métodos.
+
+console.log(Number.isNaN(NaN));
+Number.isInteger(); // verifica se é inteiro
+
+// parseFloat() serve para retornarmos um número a partir
+// de uma string. A string deve começar com um número.
+// parseInt recebe também um segundo parâmetro,
+// que é o Radix, 10 é para decimal.
+
+parseFloat('99.50'); // Mesma função sem o number
+Number.parseFloat('99.50'); // 99.5
+Number.parseFloat('100 Reais'); // 100
+Number.parseFloat('R$ 100'); // NaN
+
+parseInt('99.50', 10); // 99
+parseInt(5.43434355555, 10); // 5
+Number.parseInt('100 Reais', 10); // 100
+
+// n.toFixed(decimais) retorna uma string não um número
+// Arredonda o número com base no total
+// de casas decimais do argumento.
+
+const preco = 2.99;
+preco.toFixed(); // 3
+
+const carro = 1000.455;
+carro.toFixed(2); // 1000.46
+
+const preco2 = 1499.49;
+preco2.toFixed(); // 1499
+
+// n.toLocaleString(lang, option)
+// Formata o número de acordo com o idioma e opções passadas.
+
+const preco3 = 59.49;
+preco3.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+preco3.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+
+
+// Math
+// Método nativo que possui propriedades e métodos
+// de expressões matemáticas comuns.
+
+Math.PI; // 3.14159
+Math.E; // 2.718
+Math.LN10; // 2.303
+
+// abs() retorna o valor absoluto. retira o sinal.
+// ceil() arredonda para cima floor() para baixo, retornando um inteiro.
+// round() arredonda para o número inteiro mais próximo.
+
+Math.abs(-5.5); // 5.5
+Math.ceil(4.8334); // 5
+Math.ceil(4.3); // 5
+Math.floor(4.8334); // 4
+Math.floor(4.3); // 4
+Math.round(4.8334); // 5
+Math.round(4.3); // 4
+
+// max() retorna o maior número de uma lista de argumentos.
+// min() retorna o menor número de uma lista de argumentos.
+// random() retorna um número aleatório entre 0 e 1.
+
+Math.max(5,3,10,42,2); // 42
+Math.min(5,3,10,42,2); // 2
+
+Math.random(); // 0.XXX
+Math.floor(Math.random() * 100); // entre 0 e 100
+Math.floor(Math.random() * 500); // entre 0 e 500
+
+// Número random entre 72 e 32
+Math.floor(Math.random() * (72 - 32 + 1)) + 32;
+// Math.floor(Math.random() * (max - min + 1)) + min; // fórmula base
+
+
+// Retorne um número aleatório entre 1050 e 2000
+const aleatorio = Math.floor(Math.random() * (2000 - 1050 + 1)) + 1050;
+console.log(aleatorio);
+
+// Retorne o maior número da lista abaixo.
+
+const numeros = '4, 5, 20, 8, 9';
+const arrayNumero = numeros.split(', ');
+const numeroMaximo = Math.max(...arrayNumero);
+console.log(numeroMaximo);
+
+
+// Crie uma função para limpar os preços
+// e retornar os números com centavos arredondados
+// depois retorne a soma total
+
+const listaPrecos = ['R$ 59,99', ' R$ 100,222', 'R$ 230  ', 'r$  200'];
+
+function limparPreco(preco) {
+    preco = +preco.toUpperCase().replace('R$', '').trim().replace(',', '.');
+    preco = +preco.toFixed(2);
+    return preco;
+}
+
+let soma = 0;
+listaPrecos.forEach((preco) => {
+    soma += limparPreco(preco);    
+});
+
+console.log(soma);

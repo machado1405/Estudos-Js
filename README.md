@@ -1,2 +1,2 @@
-# Estudos-Js
-Repositório biblioteca para códigos Js desenvolvidos em cursos e aulas.
+# jsestudo
+arquivos estudo js
